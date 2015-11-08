@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  content: MyText
+  price: MyString
+  date: 2015-11-08 15:13:41
+  room: 1
+  date_of_creation: MyString
+
+two:
+  name: MyString
+  content: MyText
+  price: MyString
+  date: 2015-11-08 15:13:41
+  room: 1
+  date_of_creation: MyString
