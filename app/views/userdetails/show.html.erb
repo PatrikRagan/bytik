@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nick:</strong>
+  <%= @userdetail.nick %>
+</p>
+
+<p>
+  <strong>Notifications allowed:</strong>
+  <%= @userdetail.notifications_allowed %>
+</p>
+
+<%= link_to 'Edit', edit_userdetail_path(@userdetail) %> |
+<%= link_to 'Back', userdetails_path %>

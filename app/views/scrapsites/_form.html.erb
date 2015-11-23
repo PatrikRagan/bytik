@@ -1,0 +1,25 @@
+<%= form_for(@scrapsite) do |f| %>
+  <% if @scrapsite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scrapsite.errors.count, "error") %> prohibited this scrapsite from being saved:</h2>
+
+      <ul>
+      <% @scrapsite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nehnutelnosti %><br>
+    <%= f.check_box :nehnutelnosti %>
+  </div>
+  <div class="field">
+    <%= f.label :bazos %><br>
+    <%= f.check_box :bazos %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

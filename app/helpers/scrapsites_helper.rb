@@ -1,0 +1,2 @@
+module ScrapsitesHelper
+end
