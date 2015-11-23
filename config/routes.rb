@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :userdetails
+  resources :comments
+  resources :scrapsites
+  resources :scraps
   resources :flats
   root to: 'home#index'
   devise_for :users

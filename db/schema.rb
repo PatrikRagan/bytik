@@ -11,21 +11,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108141341) do
+ActiveRecord::Schema.define(version: 20151122235713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "date_of_creation"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+  end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "flats", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
     t.string   "price"
-    t.datetime "date"
+    t.datetime "date_of_scrap"
     t.integer  "room"
     t.string   "date_of_creation"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.boolean  "favourite"
+    t.boolean  "hidden"
+    t.integer  "scrap_id"
   end
+
+  add_index "flats", ["scrap_id"], name: "index_flats_on_scrap_id", using: :btree
+
+  create_table "scraps", force: :cascade do |t|
+    t.string   "city"
+    t.string   "part_of_town"
+    t.integer  "room_count"
+    t.text     "keywords"
+    t.integer  "price_min"
+    t.integer  "price_max"
+    t.datetime "last_search_time"
+    t.integer  "number_of_results"
+    t.datetime "time_of_result_expiration"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_id"
+  end
+
+  add_index "scraps", ["user_id"], name: "index_scraps_on_user_id", using: :btree
+
+  create_table "scrapsites", force: :cascade do |t|
+    t.boolean  "nehnutelnosti"
+    t.boolean  "bazos"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "scrap_id"
+  end
+
+  add_index "scrapsites", ["scrap_id"], name: "index_scrapsites_on_scrap_id", using: :btree
+
+  create_table "userdetails", force: :cascade do |t|
+    t.string   "nick"
+    t.boolean  "notifications_allowed"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "user_id"
+  end
+
+  add_index "userdetails", ["user_id"], name: "index_userdetails_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,4 +97,9 @@ ActiveRecord::Schema.define(version: 20151108141341) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "flats", "scraps"
+  add_foreign_key "scraps", "users"
+  add_foreign_key "scrapsites", "scraps"
+  add_foreign_key "userdetails", "users"
 end
