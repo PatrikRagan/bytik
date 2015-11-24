@@ -1,11 +1,17 @@
+<div class="jumbotron">
+  <h1>Bytik</h1>
+</div>
+
 <ul class="nav nav-pills pull-right">
   <% if user_signed_in? %>
+      <div class="span6">
       <p>Welcome <%= current_user.email %></p>
-      <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
+      <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete , :class => "btn btn-success"%>
+      </div>
   <% else %>
       <div class="span6">
         <p>You are not signed in.</p>
-        <%= link_to 'Login', new_user_session_path , :class => "btn btn-warning" %>
+        <%= link_to 'Login', new_user_session_path , :class => "btn btn-success" %>
       </div>
   <% end %>
 </ul>

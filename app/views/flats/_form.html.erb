@@ -1,41 +1,56 @@
-<%= form_for(@flat) do |f| %>
-  <% if @flat.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@flat.errors.count, "error") %> prohibited this flat from being saved:</h2>
+<div class="col-md-6">
+  <%= form_for(@flat, :html => {:class => "form-inline"}) do |f| %>
 
-      <ul>
-      <% @flat.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if @flat.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@flat.errors.count, "error") %> prohibited this flat from being saved:</h2>
+
+            <ul>
+              <% @flat.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :room %><br>
-    <%= f.number_field :room %>
-  </div>
-  <div class="field">
-    <%= f.label :date_of_creation %><br>
-    <%= f.text_field :date_of_creation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <!--<div class="field">-->
+
+      <div class="control-group">
+        <%= f.label :name, class: "label label-default" %>
+        <!--<div class="controls">-->
+        <%= f.text_field :name, class: "form-control" %>
+        <!--</div>-->
+      </div>
+      <div class="control-group">
+        <%= f.label :content, class: "label label-default" %>
+        <div class="controls">
+          <%= f.text_area :content, class: "form-control" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :price, class: "label label-default" %>
+        <div class="controls">
+          <%= f.text_field :price, class: "form-control" %>
+        </div>
+      </div>
+      <!--<div class="control-group">-->
+        <!--<#%= f.label :date_of_scrap, class: "label label-default" %>-->
+        <!--<div class="controls">-->
+          <!--<#%= f.datetime_select :date_of_scrap,:default => 24.hours.from_now,:minute_step => 5,class: "datetime" %>-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="control-group">
+        <%= f.label :room, class: "label label-default" %>
+        <div class="controls">
+          <%= f.number_field :room, class: "form-control" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :date_of_creation, class: "label label-default" %>
+        <div class="controls">
+          <%= f.text_field :date_of_creation, class: "form-control" %>
+        </div>
+      </div>
+      <%= f.submit 'create flat', :class => 'btn btn-success' %>
+  <% end %>
+</div>
