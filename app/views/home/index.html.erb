@@ -1,2 +1,99 @@
+<!--&lt;!&ndash;<#%= render :file => 'app/views/layouts/_user_widget.html.erb' %>&ndash;&gt;-->
+<!--<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">-->
+<!--&lt;!&ndash; Indicators &ndash;&gt;-->
+<!--<ol class="carousel-indicators">-->
+<!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>-->
+<!--<li data-target="#carousel-example-generic" data-slide-to="1"></li>-->
+<!--<li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
+<!--</ol>-->
 
-<!--<#%= render :file => 'app/views/layouts/_user_widget.html.erb' %>-->
+<!--&lt;!&ndash; Wrapper for slides &ndash;&gt;-->
+<!--<div class="carousel-inner">-->
+<!--<div class="item active">-->
+<!--&lt;!&ndash;<img src="http://cdn.meme.am/instances/11837275.jpg" alt="...">&ndash;&gt;-->
+<!--<#%= link_to image_tag("http://cdn.meme.am/instances/11837275.jpg", :alt => "Slide1"), {:class => "img-responsive", :alt => "Responsive image"} %>-->
+<!--<div class="carousel-caption">-->
+<!--<h3>Caption Text</h3>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="item">-->
+<!--&lt;!&ndash;<img src="http://www.quickmeme.com/img/9e/9e3a7e40eee037ffcfd2fc7ce1ff0da058b02bdc7c58e392d8a157e859bf994f.jpg" alt="...">&ndash;&gt;-->
+<!--<#%= link_to image_tag("http://www.quickmeme.com/img/9e/9e3a7e40eee037ffcfd2fc7ce1ff0da058b02bdc7c58e392d8a157e859bf994f.jpg", :alt => "Slide1"), {:class => "img-responsive", :alt => "Responsive image"} %>-->
+<!--<div class="carousel-caption">-->
+<!--<h3>Caption Text</h3>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="item">-->
+<!--&lt;!&ndash;<img src="https://imgflip.com/s/meme/Jackie-Chan-WTF.jpg alt="...">&ndash;&gt;-->
+<!--<#%= link_to image_tag("https://imgflip.com/s/meme/Jackie-Chan-WTF.jpg", :alt => "Slide1"), {:class => "img-responsive", :alt => "Responsive image"} %>-->
+<!--<div class="carousel-caption">-->
+<!--<h3>Caption Text</h3>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Controls &ndash;&gt;-->
+<!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">-->
+<!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+<!--</a>-->
+<!--<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">-->
+<!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+<!--</a>-->
+<!--</div> &lt;!&ndash; Carousel &ndash;&gt;-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+<!--<script src="js/bootstrap.min.js"></script>-->
+<div class="row centered-form center-block">
+  <div class="container col-lg-4 col-md-4 col-lg-offset-4 col-md-offset-2">
+    <h1>Let us find your home</h1>
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="row centered-form center-block">-->
+    <!--<div class="container col-lg-5 col-md-5 col-lg-offset-5 col-md-offset-3">-->
+
+    <div class="col-md-offset-2">
+      <h4>Try quick search without login</h4>
+
+      <div class="col-md-offset-1">
+        <%= link_to 'Quick search', new_user_session_path, :class => "btn btn-success" %>
+      </div>
+    </div>
+
+    <div class="col-md-offset-1">
+      <h4>Or sign up and login for experience full power of searching websites from one place</h4>
+
+      <div class="col-md-offset-2">
+        <div class="container">
+        <div class="inline-block">
+          <%= link_to 'Login', new_user_session_path, :class => "btn btn-success inline-block" %>
+          <h4 class="inline-block">or</h4>
+          <%= link_to 'Sign up', new_user_session_path, :class => "btn btn-success inline-block" %>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="col-md-offset-2">-->
+      <!--<ul class="nav nav-pills">-->
+        <!--<% if user_signed_in? %>-->
+            <!--<div class="span6">-->
+              <!--<p>Welcome <%= current_user.email %></p>-->
+
+              <!--<div class="col-lg-offset-1 col-md-offset-1">-->
+                <!--<%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete, :class => "btn btn-success" %>-->
+              <!--</div>-->
+            <!--</div>-->
+        <!--<% else %>-->
+            <!--<div class="span6">-->
+              <!--<p>You are not signed in.</p>-->
+
+              <!--<div class="col-lg-offset-1 col-md-offset-1">-->
+                <!--<%= link_to 'Login', new_user_session_path, :class => "btn btn-success" %>-->
+              <!--</div>-->
+            <!--</div>-->
+        <!--<% end %>-->
+      <!--</ul>-->
+    <!--</div>-->
+  </div>
+</div>
+

@@ -14,6 +14,22 @@
 //    @extend .control-group;
 //  }
 //}
+#jumbotronHeader{
+  color:white;
+}
+.jumbotron {
+  background-image: url("http://benhuckerbydesign.co.uk/uploads/images/projectdetail/1250546478flat1.jpg");
+  background-size: no-repeat;}
+
+.navbar-nav {
+  width: 100%;
+  //background-color: white;
+  text-align: center;
+  > li {
+    float: none;
+    display: inline-block;
+  }
+}
 
 #bytik-form {
   label{
