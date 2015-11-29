@@ -10,5 +10,12 @@ development:
   database: bytik
 
 production:
-  <<: *default
-  database: bytik
+  adapter: postgresql
+  encoding: utf8
+  database: d73v7t0kckutlf
+  port: 5432
+  pool: 5
+  username: nrflqrjbvaycxz
+  password: kxXBd1oqp4QVtqR63PU5tZhPmS
+  host: ec2-46-137-72-123.eu-west-1.compute.amazonaws.com
+  url: postgres://nrflqrjbvaycxz:kxXBd1oqp4QVtqR63PU5tZhPmS@ec2-46-137-72-123.eu-west-1.compute.amazonaws.com:5432/d73v7t0kckutlf
