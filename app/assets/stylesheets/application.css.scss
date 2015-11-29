@@ -3,3 +3,43 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 //@import "bootstrap/theme";
+
+
+//body {
+//  padding-top: 60px;
+//}
+
+//form{
+//  div{
+//    @extend .control-group;
+//  }
+//}
+
+#bytik-form {
+  label{
+    @extend .label;
+    @extend .label-default;
+  }
+  //form {
+    input {
+      @extend .form-control;
+    }
+    div {
+      label {
+        //@extend .label;
+        @extend .label-default;
+      }
+    //}
+  }
+  //form label{
+  //  //@extend .label;
+  //  @extend .label-default;
+  //}
+}
+//.btn-success{
+//  // Button Base
+//  color:black;
+//  background-color: blue;
+//  cursor: pointer;
+//  display: inline-block;
+//}
