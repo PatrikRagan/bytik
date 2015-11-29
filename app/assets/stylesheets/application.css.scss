@@ -30,7 +30,7 @@
     display: inline-block;
   }
 }
-
+.top-buffer { margin-top:50px; }
 #bytik-form {
   label{
     @extend .label;

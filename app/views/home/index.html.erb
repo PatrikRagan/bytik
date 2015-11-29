@@ -51,7 +51,7 @@
     <!--<div class="row centered-form center-block">-->
     <!--<div class="container col-lg-5 col-md-5 col-lg-offset-5 col-md-offset-3">-->
 
-    <div class="col-md-offset-2">
+    <div class="col-md-offset-2 top-buffer">
       <h4>Try quick search without login</h4>
 
       <div class="col-md-offset-1">
@@ -59,41 +59,47 @@
       </div>
     </div>
 
-    <div class="col-md-offset-1">
+    <div class="col-md-offset-0">
       <h4>Or sign up and login for experience full power of searching websites from one place</h4>
 
-      <div class="col-md-offset-2">
-        <div class="container">
-        <div class="inline-block">
-          <%= link_to 'Login', new_user_session_path, :class => "btn btn-success inline-block" %>
-          <h4 class="inline-block">or</h4>
+      <div class="col-md-offset-1">
+          <div class="col-md-2">
+            <%= link_to 'Login', new_user_session_path, :class => "btn btn-success inline-block" %>
+          </div>
+          <div class="col-md-1">
+            <h4 class="inline-block">or</h4>
+          </div>
+          <div class="col-md-1">
           <%= link_to 'Sign up', new_user_session_path, :class => "btn btn-success inline-block" %>
-        </div>
         </div>
       </div>
     </div>
-
-    <!--<div class="col-md-offset-2">-->
-      <!--<ul class="nav nav-pills">-->
-        <!--<% if user_signed_in? %>-->
-            <!--<div class="span6">-->
-              <!--<p>Welcome <%= current_user.email %></p>-->
-
-              <!--<div class="col-lg-offset-1 col-md-offset-1">-->
-                <!--<%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete, :class => "btn btn-success" %>-->
-              <!--</div>-->
-            <!--</div>-->
-        <!--<% else %>-->
-            <!--<div class="span6">-->
-              <!--<p>You are not signed in.</p>-->
-
-              <!--<div class="col-lg-offset-1 col-md-offset-1">-->
-                <!--<%= link_to 'Login', new_user_session_path, :class => "btn btn-success" %>-->
-              <!--</div>-->
-            <!--</div>-->
-        <!--<% end %>-->
-      <!--</ul>-->
-    <!--</div>-->
   </div>
+
+  <!--<div class="col-md-offset-2">-->
+  <!--<ul class="nav nav-pills">-->
+  <!--
+  <% if user_signed_in? %>-->
+      <!--<div class="span6">-->
+      <!--<p>Welcome <%= current_user.email %></p>-->
+
+      <!--<div class="col-lg-offset-1 col-md-offset-1">-->
+      <!--<%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete, :class => "btn btn-success" %>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--
+  <% else %>-->
+      <!--<div class="span6">-->
+      <!--<p>You are not signed in.</p>-->
+
+      <!--<div class="col-lg-offset-1 col-md-offset-1">-->
+      <!--<%= link_to 'Login', new_user_session_path, :class => "btn btn-success" %>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--
+  <% end %>-->
+  <!--</ul>-->
+  <!--</div>-->
+</div>
 </div>
 
