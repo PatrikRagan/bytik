@@ -8,3 +8,7 @@ default: &default
 development:
   <<: *default
   database: bytik
+
+production:
+  <<: *default
+  database: bytik
