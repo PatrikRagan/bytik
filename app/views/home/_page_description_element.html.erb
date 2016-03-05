@@ -1,0 +1,45 @@
+<!--<div id="page_descriptions2" class="container col-lg-12">-->
+<!--<div class="panel panel-default">-->
+<!--&lt;!&ndash; Default panel contents &ndash;&gt;-->
+<!--<div class="panel-body">-->
+<!--&lt;!&ndash;<p>...</p>&ndash;&gt;-->
+<!--</div>-->
+
+<!--&lt;!&ndash; List group &ndash;&gt;-->
+<!--<ul class="list-group">-->
+<!--<li class="list-group-item">Cras justo odio</li>-->
+<!--<li class="list-group-item">Dapibus ac facilisis in</li>-->
+<!--<li class="list-group-item">Morbi leo risus</li>-->
+<!--<li class="list-group-item">Porta ac consectetur ac</li>-->
+<!--<li class="list-group-item">Vestibulum at eros</li>-->
+<!--</ul>-->
+<!--</div></div></div>-->
+<% if blue_style %>
+    <div id="page_descriptions" class="container col-lg-12">
+<% else %>
+    <div id="page_descriptions2" class="container col-lg-12">
+<% end %>
+<div class="col-lg-4 col-lg-offset-1">
+  <div class="thumbnail">
+    <%= image_tag(picture) %>
+  </div>
+</div>
+
+
+<div class="panel panel-default col-lg-4 col-lg-offset-1">
+  <div class="panel-heading">
+    <%= header %>
+  </div>
+  <div>
+    <%= content %>
+  </div>
+  <div>
+    <%= link_to "Read more", root_path, :class => "dropdown-toggle", :data => {:toggle => "dropdown"} %>
+  </div>
+</div>
+
+<% if blue_style %>
+    </div>
+<% else %>
+    </div>
+<% end %>

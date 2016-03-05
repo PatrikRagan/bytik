@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122235713) do
+ActiveRecord::Schema.define(version: 20160303163218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20151122235713) do
   add_index "flats", ["scrap_id"], name: "index_flats_on_scrap_id", using: :btree
 
   create_table "scraps", force: :cascade do |t|
-    t.string   "city"
+    t.string   "city",                      null: false
     t.string   "part_of_town"
     t.integer  "room_count"
     t.text     "keywords"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 20151122235713) do
   end
 
   add_index "scrapsites", ["scrap_id"], name: "index_scrapsites_on_scrap_id", using: :btree
+
+  create_table "statistics", force: :cascade do |t|
+    t.integer  "suggested_price"
+    t.text     "result"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "userdetails", force: :cascade do |t|
     t.string   "nick"

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  resources :statistics
   resources :userdetails
   resources :comments
   resources :scrapsites
-  resources :scraps
   resources :flats
   root to: 'home#index'
   devise_for :users
+  match "home", :to => 'scraps#index', :via => :get
+  resources :scraps
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

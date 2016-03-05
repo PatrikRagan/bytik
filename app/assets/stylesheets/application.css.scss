@@ -1,9 +1,7 @@
-
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
 //@import "bootstrap/theme";
-
 
 //body {
 //  padding-top: 60px;
@@ -14,48 +12,87 @@
 //    @extend .control-group;
 //  }
 //}
-#jumbotronHeader{
-  color:white;
-}
-.jumbotron {
-  background-image: url("http://benhuckerbydesign.co.uk/uploads/images/projectdetail/1250546478flat1.jpg");
-  background-size: no-repeat;}
 
-.navbar-nav {
+//=========BOOTSTRAP OVERRIDEN START=========
+.btn-primary {
+  background-color: cornflowerblue;
+}
+
+.thumbnail {
+  width: 250px;
+  height: 150px;
+}
+
+.thumbnail > img {
+  width: 230px;
+  height: 130px;
+}
+
+//=========BOOTSTRAP OVERRIDEN END=========
+body {
+  margin: 0px !important;
+  padding: 0px !important;
+  background-color: white;
+}
+
+.navbar {
+  border: none;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#jumbotronHeader {
+  color: cornflowerblue;
+}
+
+.under_navigation_empty_space {
+  height: 50px;
+}
+
+.jumbotron {
+  //background-image: url("http://benhuckerbydesign.co.uk/uploads/images/projectdetail/1250546478flat1.jpg");
+  background-image: url("bytik_logo2.jpg");
+  background-size: no-repeat;
+  height: 50vh;
   width: 100%;
-  //background-color: white;
-  text-align: center;
-  > li {
-    float: none;
-    display: inline-block;
-  }
 }
-.top-buffer { margin-top:50px; }
-#bytik-form {
-  label{
-    @extend .label;
-    @extend .label-default;
-  }
-  //form {
-    input {
-      @extend .form-control;
-    }
-    div {
-      label {
-        //@extend .label;
-        @extend .label-default;
-      }
-    //}
-  }
-  //form label{
-  //  //@extend .label;
-  //  @extend .label-default;
-  //}
+
+#home_invite_content {
+  //padding-top: 100px;
+  padding-bottom: 100px;
 }
-//.btn-success{
-//  // Button Base
-//  color:black;
-//  background-color: blue;
-//  cursor: pointer;
-//  display: inline-block;
-//}
+
+#home_footer {
+  padding: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: cornflowerblue;
+}
+
+#to_bottom_footer {
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: cornflowerblue;
+}
+
+#page_descriptions {
+  padding: 30px;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  background-color: cornflowerblue;
+}
+
+#page_descriptions2 {
+  padding: 30px;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  background-color: white;
+}
+
+.about_app_picture {
+  height: 30px;
+  width: 30px;
+}

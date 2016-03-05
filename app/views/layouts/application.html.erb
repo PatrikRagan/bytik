@@ -8,13 +8,14 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<!--<p class="notice"><#%= notice %></p>-->
+<!--<p class="alert"><#%= alert %></p>-->
 
-<%= render 'layouts/user_widget' %>
+<%= render 'layouts/navigation' %>
+<%= render 'under_navigation_empty_space'%>
 
 <%= yield %>
 
-
+<%= render 'footer'%>
 </body>
 </html>
