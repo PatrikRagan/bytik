@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
   match "home", :to => 'scraps#index', :via => :get
   resources :scraps
+  get '/crawler' => 'flats#crawler', as: 'crawler'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
