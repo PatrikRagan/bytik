@@ -25,15 +25,17 @@ class ScrapsController < ApplicationController
   # POST /scraps.json
   def create
     @scrap = Scrap.new(scrap_params)
-
-    respond_to do |format|
+    # TODO: jump to view of all user scraps
+    # respond_to do |format|
       if @scrap.save
-        format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
-        format.json { render :show, status: :created, location: @scrap }
-      else
-        format.html { render :new }
-        format.json { render json: @scrap.errors, status: :unprocessable_entity }
-      end
+        redirect_to home_path
+            # format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
+        #     format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
+        #     format.json { render :show, status: :created, location: @scrap }
+      # else
+        #     format.html { render :new }
+        #     format.json { render json: @scrap.errors, status: :unprocessable_entity }
+      # end
     end
   end
 
@@ -62,13 +64,13 @@ class ScrapsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scrap
-      @scrap = Scrap.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_scrap
+    @scrap = Scrap.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def scrap_params
-      params.require(:scrap).permit(:city, :part_of_town, :room_count, :keywords, :price_min, :price_max, :last_search_time, :number_of_results, :time_of_result_expiration)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def scrap_params
+    params.require(:scrap).permit(:city, :part_of_town, :room_count, :keywords, :price_min, :price_max, :last_search_time, :number_of_results, :time_of_result_expiration)
+  end
 end
