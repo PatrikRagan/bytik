@@ -1,53 +1,74 @@
 <%= form_for(@scrap) do |f| %>
-  <% if @scrap.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@scrap.errors.count, "error") %> prohibited this scrap from being saved:</h2>
+    <% if @scrap.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@scrap.errors.count, "error") %> prohibited this scrap from being saved:</h2>
 
-      <ul>
-      <% @scrap.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @scrap.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="container">
+      <div class="col-lg-9 col-lg-offset-1">
+        <h1>New Scrap</h1>
+      </div>
+
+      <div class="col-lg-3 col-lg-offset-1">
+
+        <div class="field">
+          <%= f.label :city %><br>
+          <%= f.text_field :city %>
+        </div>
+        <div class="field">
+          <%= f.label :part_of_town %><br>
+          <%= f.text_field :part_of_town %>
+        </div>
+        <div class="field">
+          <%= f.label :room_count %><br>
+          <%= f.number_field :room_count %>
+        </div>
+        <div class="field">
+          <%= f.label :keywords %><br>
+          <%= f.text_area :keywords %>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-lg-offset-1">
+        <div class="field">
+          <%= f.label :price_min %><br>
+          <%= f.number_field :price_min %>
+        </div>
+        <div class="field">
+          <%= f.label :price_max %><br>
+          <%= f.number_field :price_max %>
+        </div>
+        <div class="field">
+          <%= f.label :last_search_time %><br>
+          <%= f.datetime_select :last_search_time %>
+        </div>
+        <div class="field">
+          <%= f.label :number_of_results %><br>
+          <%= f.number_field :number_of_results %>
+        </div>
+        <div class="field">
+          <%= f.label :time_of_result_expiration %><br>
+          <%= f.datetime_select :time_of_result_expiration %>
+        </div>
+        <div class="actions">
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :part_of_town %><br>
-    <%= f.text_field :part_of_town %>
-  </div>
-  <div class="field">
-    <%= f.label :room_count %><br>
-    <%= f.number_field :room_count %>
-  </div>
-  <div class="field">
-    <%= f.label :keywords %><br>
-    <%= f.text_area :keywords %>
-  </div>
-  <div class="field">
-    <%= f.label :price_min %><br>
-    <%= f.number_field :price_min %>
-  </div>
-  <div class="field">
-    <%= f.label :price_max %><br>
-    <%= f.number_field :price_max %>
-  </div>
-  <div class="field">
-    <%= f.label :last_search_time %><br>
-    <%= f.datetime_select :last_search_time %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_results %><br>
-    <%= f.number_field :number_of_results %>
-  </div>
-  <div class="field">
-    <%= f.label :time_of_result_expiration %><br>
-    <%= f.datetime_select :time_of_result_expiration %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="container">
+      <div class="col-lg-5 col-lg-offset-1">
+        <%= f.submit "Create Scrap", :class => "btn btn-primary" %>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-lg-5 col-lg-offset-1">
+        <%= link_to 'Back to all scraps', scraps_path, :class => "btn btn-primary" %>
+      </div>
+    </div>
 <% end %>
+
