@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     home_path
   end
+
+  def decline_access
+    redirect_to home_path
+    return false
+  end
+
 end
