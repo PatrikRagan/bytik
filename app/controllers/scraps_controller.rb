@@ -10,6 +10,8 @@ class ScrapsController < ApplicationController
   # GET /scraps/1
   # GET /scraps/1.json
   def show
+    #TODO: chow only users searches
+    @flats = Flat.all
   end
 
   # GET /scraps/new
