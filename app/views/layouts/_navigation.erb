@@ -24,8 +24,11 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li><%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %></li>
+        <% if user_signed_in? %>
+            <li><%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+            <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
