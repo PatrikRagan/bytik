@@ -27,6 +27,7 @@ class FlatsController < ApplicationController
 
 
     ScrapWorker.perform_async
+    Scrap2Worker.perform_async
 
 
     redirect_to home_path
