@@ -55,35 +55,40 @@
   </div>
 </div>
 
-<div class="container">
-<h1>Listing Flats</h1>
-  <table class="table table-striped table-hover">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Content</th>
-      <th>Price</th>
-      <th>Room</th>
-      <th>Date of creation</th>
-      <th>Date of Scrap</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
+  <div class="col-lg-8 col-lg-offset-0">
+    <h1>Listing Flats</h1>
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Content</th>
+        <th>Price</th>
+        <th>Room</th>
+        <th>Date of creation</th>
+        <th>Date of Scrap</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
 
-    <tbody>
-    <% @flats.each do |flat| %>
-        <tr>
-          <td><%= flat.name %></td>
-          <td><%= flat.content %></td>
-          <td><%= flat.price %></td>
-          <td><%= flat.room %></td>
-          <td><%= flat.date_of_creation %></td>
-          <td><%= flat.date_of_scrap %></td>
-          <td><%= link_to 'Show', flat %></td>
-          <td><%= link_to 'Edit', edit_flat_path(flat) %></td>
-          <td><%= link_to 'Destroy', flat, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+      <tbody>
+      <% @flats.each do |flat| %>
+          <tr>
+            <td><%= flat.name %></td>
+            <td><%= flat.content %></td>
+            <td><%= flat.price %></td>
+            <td><%= flat.room %></td>
+            <td><%= flat.date_of_creation %></td>
+            <td><%= flat.date_of_scrap %></td>
+            <td><%= link_to 'Show', flat %></td>
+            <td><%= link_to 'Edit', edit_flat_path(flat) %></td>
+            <td><%= link_to 'Destroy', flat, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-4 col-lg-offset-0">
+    <div id="sticky_commentaries">
+      <%= render partial: 'scraps/commentaries' %>
+    </div>
+  </div>

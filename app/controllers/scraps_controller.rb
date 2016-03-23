@@ -12,6 +12,8 @@ class ScrapsController < ApplicationController
   def show
     #TODO: chow only users searches
     @flats = Flat.all
+    #TODO: show only related comments to flat
+    @comments = Comment.all
   end
 
   # GET /scraps/new
