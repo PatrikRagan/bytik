@@ -79,16 +79,24 @@
             <td><%= flat.room %></td>
             <td><%= flat.date_of_creation %></td>
             <td><%= flat.date_of_scrap %></td>
+            <td><%= link_to 'More', @scrap1, :id => "clicker",:class=>"fuckit", remote: true%></td>
             <td><%= link_to 'Show', flat %></td>
             <td><%= link_to 'Edit', edit_flat_path(flat) %></td>
             <td><%= link_to 'Destroy', flat, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+          <tr>
+            <td id="epic"><%= render partial: 'scraps/commentary_accordion'%></td>
           </tr>
       <% end %>
       </tbody>
     </table>
   </div>
   <div class="col-lg-4 col-lg-offset-0">
-    <div id="sticky_commentaries">
+
+    <div id="sticky_commentaries" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Listing Comments</h3>
+      </div>
       <%= render partial: 'scraps/commentaries' %>
     </div>
   </div>

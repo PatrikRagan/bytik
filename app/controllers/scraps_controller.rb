@@ -14,6 +14,7 @@ class ScrapsController < ApplicationController
     @flats = Flat.all
     #TODO: show only related comments to flat
     @comments = Comment.all
+    @scrap1 = Scrap.first
   end
 
   # GET /scraps/new
