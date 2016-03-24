@@ -23,16 +23,16 @@
 #
 #$(document).ready(ready_ajax)
 #$(document).on('page:update', ready_ajax)
+#$ ->
+#  $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
+#  alert "The commentary was hidden."
+#TODO: potencial problem with turbolinks, works after normal page reload
 $ ->
-  $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
-  alert "The commentary was hidden."
-
-  #$ ->
   $('#clicker').click ->
     $('#sticky_commentaries').hide()
     $('#epic').hide()
 #    false
-#TODO:create toogle for epci
+#TODO:create toogle for epic
 #TODO:toogle only one actual div, viac variable probably
 
 #  $('#clicker').on 'click', ->
