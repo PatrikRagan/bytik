@@ -14,7 +14,8 @@ class ScrapsController < ApplicationController
     @flats = Flat.where(scrap_id: params[:id])
     #TODO: show only related comments to flat
     #TODO: eager loading of all comments belonging to all flats
-    @comments = Comment.where(flat_id: @flat.last.pluck(:id))
+    # @comments = Comment.where(flat_id: @flat.last.pluck(:id))
+    @comments = Comment.all
     @scrap1 = Scrap.first
   end
 
