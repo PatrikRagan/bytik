@@ -25,13 +25,15 @@
 #$(document).on('page:update', ready_ajax)
 $ ->
   $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
-    alert "The article was deleted."
+  alert "The commentary was hidden."
 
-#$ ->
+  #$ ->
   $('#clicker').click ->
     $('#sticky_commentaries').hide()
-    false
-
+    $('#epic').hide()
+#    false
+#TODO:create toogle for epci
+#TODO:toogle only one actual div, viac variable probably
 
 #  $('#clicker').on 'click', ->
 #    $('#sticky_commentaries').hide()

@@ -11,9 +11,10 @@ class ScrapsController < ApplicationController
   # GET /scraps/1.json
   def show
     #TODO: chow only users searches
-    @flats = Flat.all
+    @flats = Flat.where(scrap_id: params[:id])
     #TODO: show only related comments to flat
-    @comments = Comment.all
+    #TODO: eager loading of all comments belonging to all flats
+    @comments = Comment.where(flat_id: @flat.last.pluck(:id))
     @scrap1 = Scrap.first
   end
 
@@ -32,14 +33,14 @@ class ScrapsController < ApplicationController
     @scrap = Scrap.new(scrap_params)
     # TODO: jump to view of all user scraps
     # respond_to do |format|
-      if @scrap.save
-        redirect_to home_path
-            # format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
-        #     format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
-        #     format.json { render :show, status: :created, location: @scrap }
+    if @scrap.save
+      redirect_to home_path
+      # format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
+      #     format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
+      #     format.json { render :show, status: :created, location: @scrap }
       # else
-        #     format.html { render :new }
-        #     format.json { render json: @scrap.errors, status: :unprocessable_entity }
+      #     format.html { render :new }
+      #     format.json { render json: @scrap.errors, status: :unprocessable_entity }
       # end
     end
   end
