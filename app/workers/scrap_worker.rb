@@ -1,6 +1,10 @@
 class ScrapWorker
 
   include Sidekiq::Worker
+  include Sidetiq::Schedulable
+
+  recurrence { minutely }
+  
   sidekiq_options retry: true
   def perform
     # do something
