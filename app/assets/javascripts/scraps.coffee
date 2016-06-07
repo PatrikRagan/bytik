@@ -1,52 +1,69 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-#window.startUpdatingChat = ->
-#  setInterval(updateChat, 5000)
-#
-#window.updateChat = ->
-#  $('.dynamic').load "/rooms/#{window.roomId}?ajax=true"
-#
-#
-#ready = ->
-#  $('#chatbox').scrollTop(9999) #TODO: possible future problem when chat contains many comments and is large than 9999
-##  $('#chatbox').animate({scrollTop: $('#chatbox')[0].scrollHeight});
-##  window.scrollTo(0,100)
-#
-#$(document).ready(ready)
-#$(document).on('page:load', ready)
-#
-#ready_ajax = ->
-#  $('#chatbox').scrollTop(9999) #TODO: possible future problem when chat contains many comments and is large than 9999
-##  $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight });
-##  window.scrollTo(0,100)
-#
-#$(document).ready(ready_ajax)
-#$(document).on('page:update', ready_ajax)
-#$ ->
-#  $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
-#  alert "The commentary was hidden."
-#TODO: potencial problem with turbolinks, works after normal page reload
-$ ->
-  $('#clicker').click ->
-    $('#sticky_commentaries').hide()
-    $('#epic').hide()
-#    false
-#TODO:create toogle for epic
-#TODO:toogle only one actual div, viac variable probably
-
-#  $('#clicker').on 'click', ->
-#    $('#sticky_commentaries').hide()
-#    $('.sticky_commentaries').load('/scraps/1');
-
-
-hide_comment_link = () ->
-  $('#sticky_commentaries').hide()
-#hide_comment = () ->
-#  $('#add_comment').hide()
-#show_comment = () ->
-#  $('#add_comment').show()
+DOM = React.DOM
+@Section = React.createClass
+  getInitialState: ->
+    open: false,
+    class: "section"
+  handleClick: ->
+    if @state.open
+      console.log(@state.open + " > stav otvoreny")
+      @setState({
+        open:false,
+        class:"section"
+      })
+    else
+      console.log(@state.open + " > stav zatvoreny")
+      @setState({
+        open: true,
+        class: "section open"
+      })
+  child: ->
+    {
+      true:
+        DOM.div
+          className: "article"
+          DOM.button
+          "TRUE"
+    }[@state.open]
+  render: ->
+    DOM.div
+      className: "col-lg-10"
+      DOM.button
+        className:"btn btn-primary"
+        onClick: @handleClick
+        "Toggle"
+      DOM.div
+        className: "sectionhead"
+      DOM.section
+        title:"Section Title"
+        "sekcia"
+  #    DOM.a href: "javascript:void(0)"
+  #        @props.title
+      DOM.div
+        className: "articlewrap"
+        @child()
+      DOM.div
+        className: "article"
 
 
-#  show_comment()
-#  false
+createSection= React.createFactory(Section)
+
+@Accordion = React.createClass
+  getDefaultProps: ->
+    title: "halo"
+  render: ->
+    DOM.div
+      className: "main"
+      DOM.div
+        className: "title"
+        @props.title
+      DOM.section
+        title:"Section Title"
+        "Lorem ipsum"
+      DOM.section
+        title:"Section Title"
+        "Lorem ipsum"
+      createSection
+        id:"sekcia"
+
+
+createScrapsAccordion = React.createFactory(Accordion)
