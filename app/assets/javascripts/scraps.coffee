@@ -105,10 +105,10 @@ DOM = React.DOM
 #MOJE riesenie
 
 @Content = React.createClass
-  getInitialState: ->
-    clicked: false
-  linkClicked: (event) ->
-    @setState(clicked: true)
+#  getInitialState: ->
+#    clicked: false
+#  getDefaultProps: ->
+#    clicked: false
   contentData: ->
     {
       true:
@@ -116,8 +116,9 @@ DOM = React.DOM
           className: "row"
           DOM.span
           "content #{@props.xxx}"
-    }[@state.clicked]
+    }[@props.aaa]
   render: ->
+    console.log(@props.aaa + " > aaa in render")
     DOM.div
       className: "row"
 #      DOM.span
@@ -125,16 +126,26 @@ DOM = React.DOM
       @contentData()
 
 
-
 content = React.createFactory(@Content)
 
 @Partial = React.createClass
+  getInitialState: ->
+    clicked: false
+  getDefaultProps: ->
+    clicked: false
+  linkClicked: (event) ->
+    console.log(event + " > linkClicked")
+    if @state.clicked == true
+      @state.clicked = false
+    else
+      @state.clicked = true
+    @forceUpdate()
   render: ->
     DOM.div
       className: "title row"
       DOM.button
         onClick: () =>
-          @props.onChange(null)
+          @linkClicked(true)
         className: "btn btn-primary"
         @props.object.city
       DOM.div
@@ -142,6 +153,7 @@ content = React.createFactory(@Content)
         content
           key: @props.object.id
           xxx: @props.object.part_of_town
+          aaa: @state.clicked
 
 partial = React.createFactory(Partial)
 
