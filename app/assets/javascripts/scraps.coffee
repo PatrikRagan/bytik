@@ -8,6 +8,15 @@ DOM = React.DOM
           className: "col-lg-8"
           DOM.span
             "content #{@props.instance.part_of_town}"
+            DOM.div
+              className: "col-lg-4"
+              "city #{@props.instance.city}"
+            DOM.div
+              className: "col-lg-4"
+              "price #{@props.instance.price}"
+            DOM.div
+              className: "col-lg-4"
+              "room #{@props.instance.room}"
     }[@props.trigerred]
   render: ->
     console.log(@props.instance.part_of_town + " > @props.instance in render")
