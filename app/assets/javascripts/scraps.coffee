@@ -5,18 +5,18 @@ DOM = React.DOM
     {
       true:
         DOM.div
-          className: "col-lg-8"
+          className: "col-lg-9"
           DOM.span
             "content #{@props.instance.part_of_town}"
             DOM.div
-              className: "col-lg-4"
+              className: "col-lg-3"
               "city #{@props.instance.city}"
             DOM.div
-              className: "col-lg-4"
-              "price #{@props.instance.price}"
+              className: "col-lg-3"
+              "price #{@props.instance.price_min}"
             DOM.div
-              className: "col-lg-4"
-              "room #{@props.instance.room}"
+              className: "col-lg-3"
+              "room #{@props.instance.room_count}"
     }[@props.trigerred]
   render: ->
     console.log(@props.instance.part_of_town + " > @props.instance in render")
