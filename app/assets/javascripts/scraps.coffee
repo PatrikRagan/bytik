@@ -1,26 +1,71 @@
-DOM = React.DOM
+d = React.DOM
+########################################
+@Modal = React.createClass
+  getInitialState: ->
+    showModal: false
+#  close: ->
+#    @setState(showModal: false)
+  openDialog: ->
+    if @state.showModal == false
+      @setState(showModal: true)
+    else
+      @setState(showModal: false)
+  render: ->
+    d.div
+      className: "modal-container"
+      d.button
+        onClick: () =>
+          @openDialog()
+        className: "btn btn-warning col-lg-12 "
+        @props.name
+      if @state.showModal
+        d.div
+          className: "modal-backdrop"
+          d.div
+            className: 'modal-dialog'
+            d.div
+              className: 'modal-content'
+              d.div
+                className: 'modal-header'
+                d.button
+                  type: 'button'
+                  className: 'btn btn-default'
+                  onClick: () =>
+                    @openDialog()
+                  'Close'
+              d.div
+                className: 'modal-body'
+                "fuck"
+              d.div
+                className: 'modal-footer'
+                d.button
+                  type: 'button'
+                  className: 'btn btn-default'
+                  "ahoj"
 
+createModal = React.createFactory(Modal)
+########################################
 @Content = React.createClass
   contentData: ->
     {
       true:
-        DOM.div
+        d.div
           className: "col-lg-9"
-          DOM.span
+          d.span
             "content #{@props.instance.part_of_town}"
-            DOM.div
+            d.div
               className: "col-lg-3"
               "city #{@props.instance.city}"
-            DOM.div
+            d.div
               className: "col-lg-3"
               "price #{@props.instance.price_min}"
-            DOM.div
+            d.div
               className: "col-lg-3"
               "room #{@props.instance.room_count}"
     }[@props.trigerred]
   render: ->
     console.log(@props.instance.part_of_town + " > @props.instance in render")
-    DOM.div
+    d.div
       className: "row"
       @contentData()
 
@@ -40,14 +85,14 @@ content = React.createFactory(@Content)
       @state.clicked = true
     @forceUpdate()
   render: ->
-    DOM.div
+    d.div
       className: "col-lg-8"
-      DOM.button
+      d.button
         onClick: () =>
           @linkClicked()
         className: "btn btn-primary col-lg-12 "
         @props.object.city
-      DOM.div
+      d.div
         className: ""
         content
           key: @props.object.id
@@ -59,7 +104,17 @@ partial = React.createFactory(Partial)
 
 @Accordion = React.createClass
   render: ->
-    DOM.div
+    console.log(@props.name+ " > @props.name")
+    d.div
+      className: "row"
+      d.button
+#        type: 'button'
+        className: 'btn btn-warning'
+#        className: "btn btn-primary col-lg-12 "
+        @props.name
+#        onClick: () =>
+#          @linkClicked()
+    d.div
       className: "row"
       for scrap in @props.scraps
         partial
@@ -67,3 +122,6 @@ partial = React.createFactory(Partial)
           object: scrap
 
 createScrapsAccordion = React.createFactory(Accordion)
+
+
+
