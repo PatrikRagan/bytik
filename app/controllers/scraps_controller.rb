@@ -1,6 +1,7 @@
 class ScrapsController < ApplicationController
   before_action :set_scrap, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   # GET /scraps
   # GET /scraps.json
   def index
@@ -34,16 +35,16 @@ class ScrapsController < ApplicationController
   def create
     @scrap = Scrap.new(scrap_params)
     # TODO: jump to view of all user scraps
-    # respond_to do |format|
+    respond_to do |format|
     if @scrap.save
-      redirect_to home_path
-      # format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
-      #     format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
-      #     format.json { render :show, status: :created, location: @scrap }
-      # else
-      #     format.html { render :new }
-      #     format.json { render json: @scrap.errors, status: :unprocessable_entity }
-      # end
+      # redirect_to home_path
+      format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
+          format.html { redirect_to @scrap, notice: 'Scrap was successfully created.' }
+          format.json { head :ok }
+      else
+          format.html { render :new }
+          format.json { render json: @scrap.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -1,26 +1,51 @@
 d = React.DOM
 ########################################
+
+########################################
 @Modal = React.createClass
   getInitialState: ->
     showModal: false
 #  close: ->
 #    @setState(showModal: false)
-  openDialog: ->
+  turnOnOffDialog: ->
     if @state.showModal == false
       @setState(showModal: true)
     else
       @setState(showModal: false)
+  modal: ->
+    div
+      className: 'modal in'
+      tabIndex: -1
+      role: 'dialog'
+      'aria-hidden': false
+      ref: 'modal'
+      style:
+        display: 'block'
+      div
+        className: 'modal-dialog'
+        div
+          className: 'modal-content'
+          @props.children
   render: ->
+    console.log(@props.scraps[0].city+"> MODAL RENDERED")
     d.div
-      className: "modal-container"
+      className: "modal-container  in"
       d.button
         onClick: () =>
-          @openDialog()
+          @turnOnOffDialog()
         className: "btn btn-warning col-lg-12 "
         @props.name
       if @state.showModal
         d.div
           className: "modal-backdrop"
+          d.div
+            className: "modal in"
+            tabIndex: -1
+            role: 'dialog'
+            'aria-hidden': false
+            ref: 'modal'
+            style:
+              display: 'block'
           d.div
             className: 'modal-dialog'
             d.div
@@ -28,24 +53,127 @@ d = React.DOM
               d.div
                 className: 'modal-header'
                 d.button
-                  type: 'button'
-                  className: 'btn btn-default'
-                  onClick: () =>
-                    @openDialog()
-                  'Close'
               d.div
                 className: 'modal-body'
-                "fuck"
+                scrapForm
+                  instance: @props.scraps
+                d.div
+
               d.div
                 className: 'modal-footer'
                 d.button
                   type: 'button'
                   className: 'btn btn-default'
-                  "ahoj"
+                  onClick: () =>
+                    @turnOnOffDialog()
+                  'Close'
 
 createModal = React.createFactory(Modal)
+
+ScrapForm = React.createClass
+  getInitialState: ->
+    showModal: false
+    scrap: {
+      city: "",
+      part_of_town: "",
+    }
+    warnings: {
+      city: null
+    },
+  part_of_townChanged: (event) ->
+    @state.scrap.part_of_town = event.target.value
+    #    @validateTitle()
+    @forceUpdate()
+  cityChanged: (event) ->
+    @state.scrap.city = event.target.value
+#    @validateTitle()
+    @forceUpdate()
+  formSubmitted: ->
+#    event.preventDefault()
+    scrap = @state.scrap
+    @forceUpdate()
+    $.ajax
+      url: "/scraps.json"
+      type: "POST"
+      dataType: "JSON"
+      contentType: "application/json"
+      processData: false
+      data: JSON.stringify({
+        scrap: {
+          city: @state.scrap.city,
+          part_of_town: @state.scrap.part_of_town
+        }
+      })
+  render: ->
+    console.log(@props.object)
+    d.form
+      onSubmit: @formSubmitted
+      className: "form-horizontal"
+#      method: "post"
+#      action: "/scraps"
+      d.fieldset null,
+        d.legend null, "New Scrap"
+
+          formInputWithLabel
+            id: "city"
+            value: @state.scrap.city
+            onChange: @cityChanged
+            placeholder: "Scrap title"
+            labelText: "city"
+            warning: @state.warnings.city
+
+          formInputWithLabel
+            id: "part_of_town"
+            value: @state.scrap.part_of_town
+            onChange: @part_of_townChanged
+            placeholder: "part_of_town title"
+            labelText: "part_of_town"
+            warning: @state.warnings.part_of_town
+
+      d.button
+        type: 'submit'
+        className: 'btn btn-primary'
+        "Save"
+scrapForm = React.createFactory(ScrapForm)
 ########################################
-@Content = React.createClass
+@FormInputWithLabel = React.createClass
+  getDefaultProps: ->
+    elementType: "input"
+    inputType: "text"
+    displayName: "FormInputWithLabel"
+  render: ->
+    d.div
+      className: "form-group"
+      d.label
+        htmlFor: @props.id
+        className: "col-lg-2 control-label"
+        @props.labelText
+      d.div
+        className: "col-lg-10" + {true: 'has-warning', false: ''}[!!@props.warning]
+        @warning()
+        d[@props.elementType]
+          className: "form-control"
+          placeholder: @props.placeholder
+          id: @props.id
+          value: @props.value
+          onChange: @props.onChange
+          type: @tagType()
+  tagType: ->
+    {
+    "input": @props.inputType,
+    "textarea": null,
+    }[@props.elementType]
+  warning: ->
+    return null unless @props.warning
+    d.label
+      className: "control-label"
+      htmlFor: @props.idc
+      @props.warning
+
+formInputWithLabel = React.createFactory(FormInputWithLabel)
+
+########################################
+Content = React.createClass
   contentData: ->
     {
       true:
@@ -70,9 +198,9 @@ createModal = React.createFactory(Modal)
       @contentData()
 
 
-content = React.createFactory(@Content)
+content = React.createFactory(Content)
 
-@Partial = React.createClass
+Partial = React.createClass
   getInitialState: ->
     clicked: false
   getDefaultProps: ->
