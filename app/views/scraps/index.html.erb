@@ -1,50 +1,57 @@
 <p id="notice"><%= notice %></p>
 <!--<div class="container">-->
-  <!--<div class="col-lg-3 col-lg-offset-2 ">-->
-    <!--<h1>Listing Scraps</h1>-->
-  <!--</div>-->
-  <!--<div class="col-lg-3 col-lg-offset-1">-->
-    <!--<%= link_to 'New Scrap', new_scrap_path, :class => "btn btn-primary" %>-->
-  <!--</div>-->
+<!--<div class="col-lg-3 col-lg-offset-2 ">-->
+<!--<h1>Listing Scraps</h1>-->
+<!--</div>-->
+<!--<div class="col-lg-3 col-lg-offset-1">-->
+<!--<%= link_to 'New Scrap', new_scrap_path, :class => "btn btn-primary" %>-->
+<!--</div>-->
 <!--</div>-->
 <!--<table class="table table-striped">-->
-  <!--<thead>-->
-  <!--<tr>-->
-    <!--<th>City</th>-->
-    <!--<th>Part of town</th>-->
-    <!--<th>Room count</th>-->
-    <!--<th>Keywords</th>-->
-    <!--<th>Price min</th>-->
-    <!--<th>Price max</th>-->
-    <!--<th>Last search time</th>-->
-    <!--<th>Number of results</th>-->
-    <!--<th>Time of result expiration</th>-->
-    <!--<th colspan="3"></th>-->
-  <!--</tr>-->
-  <!--</thead>-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th>City</th>-->
+<!--<th>Part of town</th>-->
+<!--<th>Room count</th>-->
+<!--<th>Keywords</th>-->
+<!--<th>Price min</th>-->
+<!--<th>Price max</th>-->
+<!--<th>Last search time</th>-->
+<!--<th>Number of results</th>-->
+<!--<th>Time of result expiration</th>-->
+<!--<th colspan="3"></th>-->
+<!--</tr>-->
+<!--</thead>-->
 
-  <!--<tbody>-->
-  <!--<% @scraps.each do |scrap| %>-->
-      <!--<tr>-->
-        <!--<td><%= scrap.city %></td>-->
-        <!--<td><%= scrap.part_of_town %></td>-->
-        <!--<td><%= scrap.room_count %></td>-->
-        <!--<td><%= scrap.keywords %></td>-->
-        <!--<td><%= scrap.price_min %></td>-->
-        <!--<td><%= scrap.price_max %></td>-->
-        <!--<td><%= scrap.last_search_time %></td>-->
-        <!--<td><%= scrap.number_of_results %></td>-->
-        <!--<td><%= scrap.time_of_result_expiration %></td>-->
-        <!--<td><%= link_to 'Show', scrap, class: "btn btn-primary" %></td>-->
-        <!--<td><%= link_to 'Start scrap', edit_scrap_path(scrap), class: "btn btn-primary" %></td>-->
-        <!--<td><%= link_to 'Edit', edit_scrap_path(scrap), class: "btn btn-primary" %></td>-->
-        <!--<td><%= link_to 'Destroy', scrap, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %></td>-->
-      <!--</tr>-->
-  <!--<% end %>-->
-  <!--</tbody>-->
+<!--<tbody>-->
+<!--
+<% @scraps.each do |scrap| %>-->
+    <!--<tr>-->
+    <!--<td><%= scrap.city %></td>-->
+    <!--<td><%= scrap.part_of_town %></td>-->
+    <!--<td><%= scrap.room_count %></td>-->
+    <!--<td><%= scrap.keywords %></td>-->
+    <!--<td><%= scrap.price_min %></td>-->
+    <!--<td><%= scrap.price_max %></td>-->
+    <!--<td><%= scrap.last_search_time %></td>-->
+    <!--<td><%= scrap.number_of_results %></td>-->
+    <!--<td><%= scrap.time_of_result_expiration %></td>-->
+    <!--<td><%= link_to 'Show', scrap, class: "btn btn-primary" %></td>-->
+    <!--<td><%= link_to 'Start scrap', edit_scrap_path(scrap), class: "btn btn-primary" %></td>-->
+    <!--<td><%= link_to 'Edit', edit_scrap_path(scrap), class: "btn btn-primary" %></td>-->
+    <!--<td><%= link_to 'Destroy', scrap, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %></td>-->
+    <!--</tr>-->
+    <!--
+<% end %>-->
+<!--</tbody>-->
 <!--</table>-->
 <%= csrf_meta_tags %>
-<%= react_component('Modal', {scraps: @scraps_a, name: "xXXXx"}, {class: ""}) %>
-<%= react_component('Accordion', {scraps: @scraps_a, name: "xXXXx"}, {class: "container"}) %>
+<%= react_component('Modal', {scraps: @scraps_a}, {class: ""}) %>
+<p class="row">
+<div class="col-lg-offset-2">
+  <h4>Your Searches</h4>
+</div>
+</p>
+<%= react_component('Accordion', {scraps: @scraps_a}, {class: "container"}) %>
 
 <br>

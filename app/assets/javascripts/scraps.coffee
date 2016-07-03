@@ -27,14 +27,13 @@ d = React.DOM
           className: 'modal-content'
           @props.children
   render: ->
-    console.log(@props.scraps[0].city+"> MODAL RENDERED")
     d.div
       className: "modal-container  in"
       d.button
         onClick: () =>
           @turnOnOffDialog()
-        className: "btn btn-warning col-lg-12 "
-        @props.name
+        className: "btn btn-warning col-lg-2 col-lg-offset-2 "
+        "Add new search"
       if @state.showModal
         d.div
           className: "modal-backdrop"
@@ -50,15 +49,12 @@ d = React.DOM
             className: 'modal-dialog'
             d.div
               className: 'modal-content'
-              d.div
-                className: 'modal-header'
-                d.button
+#              d.div
+#                className: 'modal-header'
               d.div
                 className: 'modal-body'
                 scrapForm
                   instance: @props.scraps
-                d.div
-
               d.div
                 className: 'modal-footer'
                 d.button
@@ -129,6 +125,41 @@ ScrapForm = React.createClass
             placeholder: "part_of_town title"
             labelText: "part_of_town"
             warning: @state.warnings.part_of_town
+
+          formInputWithLabel
+            id: "room_count"
+            value: @state.scrap.room_count
+            onChange: @part_of_townChanged
+            placeholder: "part_of_town title"
+            labelText: "room_count"
+            warning: @state.warnings.room_count
+
+          formInputWithLabel
+            id: "keywords"
+            value: @state.scrap.keywords
+            onChange: @part_of_townChanged
+            placeholder: "keywords title"
+            labelText: "keywords"
+            warning: @state.warnings.keywords
+            elementType: "textarea"
+
+          formInputWithLabel
+            id: "price_min"
+            value: @state.scrap.price_min
+            onChange: @part_of_townChanged
+            placeholder: "price_min title"
+            labelText: "price_min"
+            warning: @state.warnings.price_min
+            elementType: "textarea"
+
+          formInputWithLabel
+            id: "price_max"
+            value: @state.scrap.price_max
+            onChange: @part_of_townChanged
+            placeholder: "price_max title"
+            labelText: "price_max"
+            warning: @state.warnings.price_max
+            elementType: "textarea"
 
       d.button
         type: 'submit'
@@ -232,14 +263,13 @@ partial = React.createFactory(Partial)
 
 @Accordion = React.createClass
   render: ->
-    console.log(@props.name+ " > @props.name")
     d.div
       className: "row"
       d.button
 #        type: 'button'
         className: 'btn btn-warning'
 #        className: "btn btn-primary col-lg-12 "
-        @props.name
+        "Add new search"
 #        onClick: () =>
 #          @linkClicked()
     d.div
