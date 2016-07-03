@@ -246,11 +246,14 @@ Partial = React.createClass
   render: ->
     d.div
       className: "col-lg-8"
+      d.div
+        className: "col-lg-1"
+        @props.num
       d.button
         onClick: () =>
           @linkClicked()
-        className: "btn btn-primary col-lg-12 "
-        @props.object.city
+        className: "btn btn-primary col-lg-10 "
+        "City: #{@props.object.city} Rooms: #{@props.object.room_count}"
       d.div
         className: ""
         content
@@ -274,10 +277,13 @@ partial = React.createFactory(Partial)
 #          @linkClicked()
     d.div
       className: "row"
-      for scrap in @props.scraps
+#      @i = 0
+      for scrap, i in @props.scraps
+        console.log(scrap.num)
         partial
           key: scrap.id
           object: scrap
+          num: i+1
 
 createScrapsAccordion = React.createFactory(Accordion)
 
