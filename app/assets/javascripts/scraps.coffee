@@ -229,16 +229,6 @@ formInputWithLabel = React.createFactory(FormInputWithLabel)
 
 ########################################
 Content = React.createClass
-  deleteSearch: ->
-    console.log("delete serarch")
-#    mixins: [ Navigatable ]
-#    navigate
-    $.ajax
-      url: "scraps/3"
-      type: 'DELETE'
-      dataType: 'JSON'
-      contentType: "application/json"
-      processData: false
   contentData: ->
     {
       true:
@@ -262,18 +252,6 @@ Content = React.createClass
               href: "scraps/#{@props.instance.id}",
               className: "btn btn-primary"
               "Open search"
-#            d.button
-#              className: "btn btn-error"
-#              onClick: () =>
-#                $.ajax
-#                  url: "scraps/#{@props.instance.id}"
-#                  type: 'DELETE'
-#                  dataType: 'JSON'
-#                  contentType: "application/json"
-#                  processData: false
-#                @linkClicked()
-#                console.log("deleteDD")
-#              "Delete"
     }[@props.trigerred]
   render: ->
     console.log(@props.instance.part_of_town + " > @props.instance in render")
@@ -286,20 +264,22 @@ content = React.createFactory(Content)
 
 Partial = React.createClass
   propTypes: ->
-    update: React.PropTypes.func,
+    update: React.PropTypes.func
   getInitialState: ->
     clicked: false
   getDefaultProps: ->
     clicked: false
-  updates: ->
-    @props.update()
+  updates: (num) ->
+    console.log("updates child>> ")
+    @linkClicked()
+    console.log("updates child, link clicked>> ")
+    @props.updater(num)
+    console.log("updates child, callback was called>> ")
   linkClicked: ->
-    console.log("updateMe props> " +@props)
     if @state.clicked == true
-      @state.clicked = false
+      @setState(clicked: false)
     else
-      @state.clicked = true
-    @forceUpdate()
+      @setState(clicked: true)
   render: ->
     d.div
       className: "col-lg-8"
@@ -327,8 +307,7 @@ Partial = React.createClass
                 dataType: 'JSON'
                 contentType: "application/json"
                 processData: false
-              @updates()
-              console.log("deleteDD")
+              @updates(@props.num-1)
             "Delete"
 
 partial = React.createFactory(Partial)
@@ -336,35 +315,30 @@ partial = React.createFactory(Partial)
 
 @Accordion = React.createClass
   getInitialState: ->
-    updateMe: false
-  updateMe: ->
-    console.log("> updateMe")
-#    if @state.updateMe == true
-#      @state.updateMe = false
-#      @forceUpdate()
-#    else
-#      @state.updateMe = true
-#    @forceUpdate()
+    childCount:  @props.scraps
+    childChanged: true
+  updateMe: (num) ->
+    @setState(childChanged: false)
+    console.log("num> " + num)
+    console.log("num> " + @state.childCount.slice(0, num).concat(@state.childCount.slice(num + 1)))
+    @setState(childCount: @state.childCount.slice(0, num).concat(@state.childCount.slice(num + 1)))
+    @forceUpdate()
+    console.log(">> updateMe parent")
   render: ->
     d.div
       className: "row"
       d.button
-#        type: 'button'
         className: 'btn btn-warning'
-#        className: "btn btn-primary col-lg-12 "
         "Add new search"
-#        onClick: () =>
-#          @linkClicked()
     d.div
       className: "row"
-#      @i = 0
-      for scrap, i in @props.scraps
+      for scrap, i in @state.childCount
         console.log(scrap.num)
         partial
           key: scrap.id
           object: scrap
           num: i+1
-          update: @updateMe()
+          updater: @updateMe
 
 createScrapsAccordion = React.createFactory(Accordion)
 
