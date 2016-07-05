@@ -229,22 +229,51 @@ formInputWithLabel = React.createFactory(FormInputWithLabel)
 
 ########################################
 Content = React.createClass
+  deleteSearch: ->
+    console.log("delete serarch")
+#    mixins: [ Navigatable ]
+#    navigate
+    $.ajax
+      url: "scraps/3"
+      type: 'DELETE'
+      dataType: 'JSON'
+      contentType: "application/json"
+      processData: false
   contentData: ->
     {
       true:
         d.div
-          className: "col-lg-9"
-          d.span
-            "content #{@props.instance.part_of_town}"
-            d.div
-              className: "col-lg-3"
-              "city #{@props.instance.city}"
-            d.div
-              className: "col-lg-3"
-              "price #{@props.instance.price_min}"
-            d.div
-              className: "col-lg-3"
-              "room #{@props.instance.room_count}"
+          className: "col-lg-8"
+          d.div
+            className: "col-lg-4"
+            "part of town #{@props.instance.part_of_town}"
+          d.div
+            className: "col-lg-4"
+            "city #{@props.instance.city}"
+          d.div
+            className: "col-lg-4"
+            "price #{@props.instance.price_min}"
+          d.div
+            className: "col-lg-4"
+            "room #{@props.instance.room_count}"
+          d.div
+            className: "col-lg-8"
+            d.a
+              href: "scraps/#{@props.instance.id}",
+              className: "btn btn-primary"
+              "Open search"
+#            d.button
+#              className: "btn btn-error"
+#              onClick: () =>
+#                $.ajax
+#                  url: "scraps/#{@props.instance.id}"
+#                  type: 'DELETE'
+#                  dataType: 'JSON'
+#                  contentType: "application/json"
+#                  processData: false
+#                @linkClicked()
+#                console.log("deleteDD")
+#              "Delete"
     }[@props.trigerred]
   render: ->
     console.log(@props.instance.part_of_town + " > @props.instance in render")
@@ -261,7 +290,8 @@ Partial = React.createClass
   getDefaultProps: ->
     clicked: false
   linkClicked: ->
-    console.log("> linkClicked")
+    console.log("updateMe > " +@state.updateMe)
+    @state.updateMe = true
     if @state.clicked == true
       @state.clicked = false
     else
@@ -284,11 +314,34 @@ Partial = React.createClass
           key: @props.object.id
           instance: @props.object
           trigerred: @state.clicked
+        if @state.clicked == true
+          d.button
+            className: "btn btn-error"
+            onClick: () =>
+              $.ajax
+                url: "scraps/#{@props.object.id}"
+                type: 'DELETE'
+                dataType: 'JSON'
+                contentType: "application/json"
+                processData: false
+              @linkClicked()
+              console.log("deleteDD")
+            "Delete"
 
 partial = React.createFactory(Partial)
 
 
 @Accordion = React.createClass
+  getInitialState: ->
+    updateMe: false
+  updateMe: ->
+    console.log("> updateMe")
+    if @state.updateMe == true
+      @state.updateMe = false
+      @forceUpdate()
+    else
+      @state.updateMe = true
+    @forceUpdate()
   render: ->
     d.div
       className: "row"
@@ -308,6 +361,7 @@ partial = React.createFactory(Partial)
           key: scrap.id
           object: scrap
           num: i+1
+          up: @state.updateMe
 
 createScrapsAccordion = React.createFactory(Accordion)
 
