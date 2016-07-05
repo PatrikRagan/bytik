@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324154908) do
+ActiveRecord::Schema.define(version: 20160705124533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 20160324154908) do
   end
 
   add_index "flats", ["scrap_id"], name: "index_flats_on_scrap_id", using: :btree
+
+  create_table "flatscraps", force: :cascade do |t|
+    t.integer  "flat_id"
+    t.integer  "scrap_id"
+    t.boolean  "favourite"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "scraps", force: :cascade do |t|
     t.string   "city",                      null: false

@@ -72,10 +72,30 @@ ScrapForm = React.createClass
     scrap: {
       city: "",
       part_of_town: "",
+      room_count:  "",
+      keywords: "",
+      price_min:  "",
+      price_max:  "",
     }
     warnings: {
       city: null
     },
+  price_minChanged: (event) ->
+    @state.scrap.price_min = event.target.value
+    #    @validateTitle()
+    @forceUpdate()
+  price_maxChanged: (event) ->
+    @state.scrap.price_max = event.target.value
+    #    @validateTitle()
+    @forceUpdate()
+  room_countChanged: (event) ->
+    @state.scrap.room_count = event.target.value
+    #    @validateTitle()
+    @forceUpdate()
+  keywordsChanged: (event) ->
+    @state.scrap.keywords = event.target.value
+    #    @validateTitle()
+    @forceUpdate()
   part_of_townChanged: (event) ->
     @state.scrap.part_of_town = event.target.value
     #    @validateTitle()
@@ -97,7 +117,11 @@ ScrapForm = React.createClass
       data: JSON.stringify({
         scrap: {
           city: @state.scrap.city,
-          part_of_town: @state.scrap.part_of_town
+          part_of_town: @state.scrap.part_of_town,
+          room_count: @state.scrap.room_count
+          keywords: @state.scrap.keywords
+          price_min: @state.scrap.price_min
+          price_max: @state.scrap.price_max
         }
       })
   render: ->
@@ -129,7 +153,7 @@ ScrapForm = React.createClass
           formInputWithLabel
             id: "room_count"
             value: @state.scrap.room_count
-            onChange: @part_of_townChanged
+            onChange: @room_countChanged
             placeholder: "part_of_town title"
             labelText: "room_count"
             warning: @state.warnings.room_count
@@ -137,7 +161,7 @@ ScrapForm = React.createClass
           formInputWithLabel
             id: "keywords"
             value: @state.scrap.keywords
-            onChange: @part_of_townChanged
+            onChange: @keywordsChanged
             placeholder: "keywords title"
             labelText: "keywords"
             warning: @state.warnings.keywords
@@ -146,7 +170,7 @@ ScrapForm = React.createClass
           formInputWithLabel
             id: "price_min"
             value: @state.scrap.price_min
-            onChange: @part_of_townChanged
+            onChange: @price_minChanged
             placeholder: "price_min title"
             labelText: "price_min"
             warning: @state.warnings.price_min
@@ -155,7 +179,7 @@ ScrapForm = React.createClass
           formInputWithLabel
             id: "price_max"
             value: @state.scrap.price_max
-            onChange: @part_of_townChanged
+            onChange: @price_maxChanged
             placeholder: "price_max title"
             labelText: "price_max"
             warning: @state.warnings.price_max

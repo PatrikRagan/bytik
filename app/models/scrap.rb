@@ -1,3 +1,8 @@
 class Scrap < ActiveRecord::Base
-  # validates :city, presence: true
+  has_many :flatscraps
+  has_many :flats, through: :flatscraps
+  belongs_to :user
+
+  validates :city, presence: true
+
 end
