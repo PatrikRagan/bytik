@@ -285,13 +285,16 @@ Content = React.createClass
 content = React.createFactory(Content)
 
 Partial = React.createClass
+  propTypes: ->
+    update: React.PropTypes.func,
   getInitialState: ->
     clicked: false
   getDefaultProps: ->
     clicked: false
+  updates: ->
+    @props.update()
   linkClicked: ->
-    console.log("updateMe > " +@state.updateMe)
-    @state.updateMe = true
+    console.log("updateMe props> " +@props)
     if @state.clicked == true
       @state.clicked = false
     else
@@ -324,7 +327,7 @@ Partial = React.createClass
                 dataType: 'JSON'
                 contentType: "application/json"
                 processData: false
-              @linkClicked()
+              @updates()
               console.log("deleteDD")
             "Delete"
 
@@ -336,12 +339,12 @@ partial = React.createFactory(Partial)
     updateMe: false
   updateMe: ->
     console.log("> updateMe")
-    if @state.updateMe == true
-      @state.updateMe = false
-      @forceUpdate()
-    else
-      @state.updateMe = true
-    @forceUpdate()
+#    if @state.updateMe == true
+#      @state.updateMe = false
+#      @forceUpdate()
+#    else
+#      @state.updateMe = true
+#    @forceUpdate()
   render: ->
     d.div
       className: "row"
@@ -361,7 +364,7 @@ partial = React.createFactory(Partial)
           key: scrap.id
           object: scrap
           num: i+1
-          up: @state.updateMe
+          update: @updateMe()
 
 createScrapsAccordion = React.createFactory(Accordion)
 

@@ -15,7 +15,7 @@ Scrap.delete_all
 User.delete_all
 
 user1   = User.create!  :email => 'john@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret', :last_sign_in_at => yesterday
-user2 = User.create! :email => 'patres2@gmail.com', :password => 'aaaaaaaa', :password_confirmation => 'aaaaaaaa', :last_sign_in_at => yesterday
+user2 = User.create! :email => 'patres@gmail.com', :password => 'aaaaaaaa', :password_confirmation => 'aaaaaaaa', :last_sign_in_at => yesterday
 
 
 scrap1 = Scrap.create! city: "Kosice", part_of_town: "KVP", room_count: 3, keywords: "balkon",
