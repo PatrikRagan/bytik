@@ -87,8 +87,12 @@ ScrapForm = React.createClass
     @state.warnings.city = if /\S/.test(@state.scrap.city) then null else d.div
         className: ""
         "Cannot be blank"
-  validateCityBool: () ->
     /\S/.test(@state.scrap.city)
+  validateRoom: () ->
+    @state.warnings.room_count = if /\S/.test(@state.scrap.room_count) then null else d.div
+      className: ""
+      "Cannot be blank"
+    /\S/.test(@state.scrap.room_count)
   price_minChanged: (event) ->
     @state.scrap.price_min = event.target.value
     #    @validateTitle()
@@ -114,15 +118,15 @@ ScrapForm = React.createClass
 #    @validateCity()
     @forceUpdate()
   formSubmitted: (event) ->
-    event.preventDefault()
+#    event.preventDefault()
     scrap = @state.scrap
-    @validateCity()
-#    unless @validateCityBool()==true
-#      console.log("preventing!")
-#      event.preventDefault()
+#    @validateCity()
+    if @validateCity() == false || @validateRoom() == false
+      console.log("preventing!")
+      event.preventDefault()
     @forceUpdate()
-#    for own key of @state.scrap
-#      return if @state.warnings[key]
+    for own key of @state.scrap
+      return if @state.warnings[key]
     $.ajax
       url: "/scraps.json"
       type: "POST"
