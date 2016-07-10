@@ -1,7 +1,5 @@
 d = React.DOM
 ########################################
-
-########################################
 @Modal = React.createClass
   getInitialState: ->
     showModal: false
@@ -78,8 +76,19 @@ ScrapForm = React.createClass
       price_max:  "",
     }
     warnings: {
-      city: null
+      city: null,
+      part_of_town: null,
+      room_count:  null,
+      keywords: null,
+      price_min:  null,
+      price_max:  null,
     },
+  validateCity: () ->
+    @state.warnings.city = if /\S/.test(@state.scrap.city) then null else d.div
+        className: ""
+        "Cannot be blank"
+  validateCityBool: () ->
+    /\S/.test(@state.scrap.city)
   price_minChanged: (event) ->
     @state.scrap.price_min = event.target.value
     #    @validateTitle()
@@ -102,12 +111,18 @@ ScrapForm = React.createClass
     @forceUpdate()
   cityChanged: (event) ->
     @state.scrap.city = event.target.value
-#    @validateTitle()
+#    @validateCity()
     @forceUpdate()
-  formSubmitted: ->
-#    event.preventDefault()
+  formSubmitted: (event) ->
+    event.preventDefault()
     scrap = @state.scrap
+    @validateCity()
+#    unless @validateCityBool()==true
+#      console.log("preventing!")
+#      event.preventDefault()
     @forceUpdate()
+#    for own key of @state.scrap
+#      return if @state.warnings[key]
     $.ajax
       url: "/scraps.json"
       type: "POST"
@@ -204,10 +219,10 @@ scrapForm = React.createFactory(ScrapForm)
         className: "col-lg-2 control-label"
         @props.labelText
       d.div
-        className: "col-lg-10" + {true: 'has-warning', false: ''}[!!@props.warning]
+        className: "col-lg-8" + {true: ' has-warning', false: ''}[!!@props.warning]
         @warning()
         d[@props.elementType]
-          className: "form-control"
+          className: "col-lg-6"
           placeholder: @props.placeholder
           id: @props.id
           value: @props.value
