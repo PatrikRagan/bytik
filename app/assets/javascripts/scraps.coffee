@@ -3,8 +3,6 @@ d = React.DOM
 @Modal = React.createClass
   getInitialState: ->
     showModal: false
-#  close: ->
-#    @setState(showModal: false)
   turnOnOffDialog: ->
     if @state.showModal == false
       @setState(showModal: true)
@@ -47,8 +45,6 @@ d = React.DOM
             className: 'modal-dialog'
             d.div
               className: 'modal-content'
-#              d.div
-#                className: 'modal-header'
               d.div
                 className: 'modal-body'
                 scrapForm
@@ -89,38 +85,35 @@ ScrapForm = React.createClass
         "Cannot be blank"
     /\S/.test(@state.scrap.city)
   validateRoom: () ->
+#    nonNumericRegex = /[^0-9.]+/g;
     @state.warnings.room_count = if /\S/.test(@state.scrap.room_count) then null else d.div
       className: ""
       "Cannot be blank"
     /\S/.test(@state.scrap.room_count)
   price_minChanged: (event) ->
     @state.scrap.price_min = event.target.value
-    #    @validateTitle()
     @forceUpdate()
   price_maxChanged: (event) ->
     @state.scrap.price_max = event.target.value
-    #    @validateTitle()
     @forceUpdate()
   room_countChanged: (event) ->
     @state.scrap.room_count = event.target.value
-    #    @validateTitle()
     @forceUpdate()
   keywordsChanged: (event) ->
     @state.scrap.keywords = event.target.value
-    #    @validateTitle()
     @forceUpdate()
   part_of_townChanged: (event) ->
     @state.scrap.part_of_town = event.target.value
-    #    @validateTitle()
     @forceUpdate()
   cityChanged: (event) ->
     @state.scrap.city = event.target.value
-#    @validateCity()
     @forceUpdate()
+  optionSelected: (event) ->
+    @state.scrap.room_count = event.target.value
+    @forceUpdate()
+    console.log("room reselected")
   formSubmitted: (event) ->
-#    event.preventDefault()
     scrap = @state.scrap
-#    @validateCity()
     if @validateCity() == false || @validateRoom() == false
       console.log("preventing!")
       event.preventDefault()
@@ -169,13 +162,15 @@ ScrapForm = React.createClass
             labelText: "part_of_town"
             warning: @state.warnings.part_of_town
 
-          formInputWithLabel
+          formSelectWithLabel
             id: "room_count"
             value: @state.scrap.room_count
             onChange: @room_countChanged
             placeholder: "part_of_town title"
             labelText: "room_count"
             warning: @state.warnings.room_count
+            optionSelected: @optionSelected
+            options: [1,2,3,4,5]
 
           formInputWithLabel
             id: "keywords"
@@ -246,6 +241,48 @@ scrapForm = React.createFactory(ScrapForm)
 
 formInputWithLabel = React.createFactory(FormInputWithLabel)
 
+########################################
+@FormSelectWithLabel = React.createClass
+  render: ->
+    d.div
+      className: "form-group"
+      d.label
+        htmlFor: @props.id
+        className: "col-lg-2 control-label"
+        @props.labelText
+      d.div
+        className: "col-lg-8" + {true: ' has-warning', false: ''}[!!@props.warning]
+        @warning()
+          d.select
+            id: @props.id
+            defaultValue: @props.value
+            required: true
+            onSelect: @props.optionSelected
+            d.option
+              value: null
+              onClick: @props.optionSelected
+              "Please select"
+            for key in @props.options
+              selectOption
+                key: key
+                id: key
+                optionSelected: @props.optionSelected
+
+  warning: ->
+    return null unless @props.warning
+    d.label
+      className: "control-label"
+      htmlFor: @props.idc
+      @props.warning
+formSelectWithLabel = React.createFactory(FormSelectWithLabel)
+
+@SelectOption = React.createClass
+  render: ->
+    d.option
+      value: @props.id
+      onClick: @props.optionSelected
+      @props.id
+selectOption = React.createFactory(SelectOption)
 ########################################
 Content = React.createClass
   contentData: ->
