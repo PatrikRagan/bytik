@@ -355,7 +355,7 @@ Partial = React.createClass
           trigerred: @state.clicked
         if @state.clicked == true
           d.button
-            className: "btn btn-error"
+            className: "btn btn-warning"
             onClick: () =>
               $.ajax
                 url: "scraps/#{@props.object.id}"

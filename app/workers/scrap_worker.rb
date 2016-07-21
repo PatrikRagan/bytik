@@ -6,6 +6,7 @@ class ScrapWorker
   recurrence { minutely }
   
   sidekiq_options retry: true
+
   def perform
     # do something
     @flats_links = Array[]
@@ -13,8 +14,8 @@ class ScrapWorker
     doc = Nokogiri::HTML(open(@url))
     doc.xpath("//div[@class='advertisement-head ']/h2/a").each do |item|
       puts
-      xxx = item.to_s.match(/http:\/\/([^"]*)/)
-      @flats_links.push(xxx.to_s)
+      flat_link = item.to_s.match(/http:\/\/([^"]*)/)
+      @flats_links.push(flat_link.to_s)
     end
     @flats_links.reverse.each do |item|
       innerpage = Nokogiri::HTML(open(item))

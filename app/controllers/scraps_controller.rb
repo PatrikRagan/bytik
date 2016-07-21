@@ -5,20 +5,18 @@ class ScrapsController < ApplicationController
   # GET /scraps
   # GET /scraps.json
   def index
-    @scraps = Scrap.all
-    @scraps_a = Scrap.all.to_a
+    @scraps_a = Scrap.where(user_id: current_user.id).to_a
   end
 
   # GET /scraps/1
   # GET /scraps/1.json
   def show
-    #TODO: chow only users searches
-    @flats = Flat.where(scrap_id: params[:id])
+    @scrap = Scrap.find(params[:id])
+    @flats = Flat.where(room: @scrap.room_count)
+                 .where(price: @scrap.price_min..@scrap.price_max)
     #TODO: show only related comments to flat
-    #TODO: eager loading of all comments belonging to all flats
     # @comments = Comment.where(flat_id: @flat.last.pluck(:id))
     @comments = Comment.all
-    @scrap1 = Scrap.first
   end
 
   # GET /scraps/new
@@ -34,6 +32,7 @@ class ScrapsController < ApplicationController
   # POST /scraps.json
   def create
     @scrap = Scrap.new(scrap_params)
+    @scrap.user_id = current_user.id
     # TODO: jump to view of all user scraps
     respond_to do |format|
     if @scrap.save

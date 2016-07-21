@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  resources :statistics
-  resources :userdetails
-  resources :comments
-  resources :scrapsites
-  resources :flats
+  # resources :statistics
+  # resources :userdetails
+  # resources :comments
+  # resources :scrapsites
   root to: 'home#index'
+  resources :flats
+  resources :scraps
   # devise_for :users
   match "home", :to => 'scraps#index', :via => :get
-  resources :scraps
   get '/crawler' => 'flats#crawler', as: 'crawler'
   devise_for :users, controllers: { sessions: 'users/sessions' }
   # The priority is based upon order of creation: first created -> highest priority.
