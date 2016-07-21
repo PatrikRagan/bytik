@@ -16,6 +16,18 @@ test: &test
   <<: *default
   database: bytik_test
 
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: ddg3oaimakmg78
+  port: 5432
+  pool: 5
+  username: yzhrspagzjetxj
+  password: k0C_AyP2sHv76k7k0cHIgbUDjE
+  host: ec2-54-247-167-90.eu-west-1.compute.amazonaws.com
+  url: postgres://yzhrspagzjetxj:k0C_AyP2sHv76k7k0cHIgbUDjE@ec2-54-247-167-90.eu-west-1.compute.amazonaws.com:5432/ddg3oaimakmg78
+
+
 #development:
 #  <<: *default
 #  database: myapp_development
