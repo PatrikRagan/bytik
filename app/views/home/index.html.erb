@@ -3,6 +3,7 @@
     <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete, :class => "btn btn-success" %>
 <% else %>
     <%= render 'jumbotron' %>
-    <%= render 'not_logged_content' %>
+    <!--<%#= render 'not_logged_content' %>-->
+    <%= render 'description_header' %>
     <%= render 'page_descriptions' %>
 <% end %>

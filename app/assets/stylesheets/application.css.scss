@@ -10,13 +10,45 @@
 }
 
 .thumbnail {
-  width: 250px;
-  height: 150px;
+  border: 0 none;
+  box-shadow: none;
+  background-color:transparent;
+}
+.img-thumbnail{background-color:transparent}
+//.thumbnail > img {
+//  //width: 230px;
+//  //height: 130px;
+//}
+
+.btn-default {
+  &.btn-inverse {
+    @include button-variant($btn-default-bg, $btn-default-color, $btn-default-bg);
+    &:hover {
+      @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-default-bg, transparent, $btn-default-bg);
+    &:hover {
+      @include button-variant($btn-default-bg, darken($btn-default-bg, 25%), $btn-default-bg);
+    }
+  }
 }
 
-.thumbnail > img {
-  width: 230px;
-  height: 130px;
+
+.btn-primary {
+  &.btn-inverse {
+    @include button-variant($btn-primary-bg, $btn-primary-color, $btn-primary-bg);
+    &:hover {
+      @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-primary-bg, transparent, $btn-primary-bg);
+    &:hover {
+      @include button-variant($btn-primary-bg, darken($btn-primary-bg, 25%), $btn-primary-bg);
+    }
+  }
 }
 
 .modal-container {
@@ -30,6 +62,22 @@ body {
   margin: 0px !important;
   padding: 0px !important;
   background-color: white;
+}
+
+* {
+  font-family: "sans serif";
+}
+
+.white-text{
+  color:white;
+}
+
+.bold-text{
+  font-weight: bold;
+}
+
+.bigger-text{
+  font-size: 16px;
 }
 
 .navbar {
@@ -47,11 +95,18 @@ body {
 }
 
 .jumbotron {
-  background-image: url("bytik_logo2.jpg");
+  background-image: url("bytik_logo.jpg");
   background-size: no-repeat;
-  height: 50vh;
+  display: inline;
+  height: 72vh;
   width: 100%;
+  float: left;
+  margin-right:-304px;
 }
+
+//.login-info {
+//  margin-
+//}
 
 #home_invite_content {
   //padding-top: 100px;

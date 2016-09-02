@@ -19,7 +19,7 @@
 <% else %>
     <div id="page_descriptions2" class="container col-lg-12">
 <% end %>
-<div class="col-lg-4 col-lg-offset-1">
+<div class="col-lg-2 col-lg-offset-2">
   <div class="thumbnail">
     <%= image_tag(picture) %>
   </div>
@@ -27,14 +27,16 @@
 
 
 <div class="panel panel-default col-lg-4 col-lg-offset-1">
-  <div class="panel-heading">
+  <div class="panel-heading bold-text bigger-text">
     <%= header %>
   </div>
-  <div>
+  <div class="">
     <%= content %>
   </div>
   <div>
+    </p>
     <%= link_to "Read more", root_path, :class => "dropdown-toggle", :data => {:toggle => "dropdown"} %>
+    </p>
   </div>
 </div>
 
