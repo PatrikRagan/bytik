@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 #
-ruby "2.2.3"
+# ruby "2.2.3"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 
@@ -28,9 +28,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.5'
 
-gem 'sidekiq'
-gem 'sidetiq'
-
+# gem 'sidekiq'
+# gem 'sidetiq'
+gem 'foreman'
+gem 'webpack-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -73,3 +74,5 @@ group :production do
   # gem 'therubyracer'
 end
 
+
+gem 'foreman'

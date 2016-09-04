@@ -2,8 +2,12 @@
 <html>
 <head>
   <title>Bytik.sk</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!--TO USE RAILS APP TO HANDLE JAVASCRIPT-->
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!--TO USE WEBPACK TO HANDLE JAVASCRIPT-->
+  <%= javascript_include_tag *webpack_asset_paths('application', extension: 'js') %>
+  <%= stylesheet_link_tag *webpack_asset_paths('application', extension: 'css') %>
   <%= csrf_meta_tags %>
 </head>
 <body>

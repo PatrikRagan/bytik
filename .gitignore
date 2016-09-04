@@ -16,4 +16,6 @@
 .env
 /public/*
 .byebug_history
-Procfile
+Procfile# Added by webpack-rails
+/node_modules
+/public/webpack
