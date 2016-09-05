@@ -14,7 +14,7 @@ var production = process.env.NODE_ENV === 'production';
 var config = {
   entry: {
     // Sources are expected to live in $app_root/webpack
-    'application': './webpack/application.js'
+    'application': './webpack/application.coffee'
   },
 
   output: {
@@ -65,6 +65,29 @@ if (production) {
   config.output.publicPath = '//localhost:' + devServerPort + '/webpack/';
   // Source maps
   config.devtool = 'cheap-module-eval-source-map';
+}
+
+module: {
+  loaders: [
+    {
+      test: /\.jsx$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: "babel?presets[]=react,presets[]=es2015"
+    },
+    {
+      test: /\.coffee$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: "babel?presets[]=react,presets[]=es2015"
+    },
+    {
+      test: /\.es6$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: "babel?presets[]=es2015"
+    },
+  ]
+}
+resolve: {
+  extensions: ["", ".js", ".jsx", ".es6", ".coffee"]
 }
 
 module.exports = config;

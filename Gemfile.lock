@@ -285,7 +285,7 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-  webpack-rails
+  webpack-rails (~> 0.9.9)
 
 BUNDLED WITH
    1.11.0

@@ -31,7 +31,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # gem 'sidekiq'
 # gem 'sidetiq'
 gem 'foreman'
-gem 'webpack-rails'
+gem 'webpack-rails', '~> 0.9.9'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -73,6 +74,3 @@ group :production do
   # gem 'rails_12factor'
   # gem 'therubyracer'
 end
-
-
-gem 'foreman'
