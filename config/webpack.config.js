@@ -29,7 +29,8 @@ var config = {
   },
 
   resolve: {
-    root: path.join(__dirname, '..', 'webpack')
+    root: path.join(__dirname, '..', 'webpack'),
+    extensions: ["", ".js", ".jsx", ".es6", ".coffee"]
   },
 
   plugins: [
@@ -85,9 +86,6 @@ module: {
       loader: "babel?presets[]=es2015"
     },
   ]
-}
-resolve: {
-  extensions: ["", ".js", ".jsx", ".es6", ".coffee"]
 }
 
 module.exports = config;

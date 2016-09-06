@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
+    "react": "^15.3.1",
     "stats-webpack-plugin": "^0.2.1",
     "webpack": "^1.9.11",
     "webpack-dev-server": "^1.9.0"
+  },
+  "devDependencies": {
+    "coffee-loader": "^0.7.2"
   }
 }

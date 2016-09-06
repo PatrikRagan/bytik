@@ -1,6 +1,7 @@
+React = require 'react'
 d = React.DOM
 
-@Modal = React.createClass
+Modal = React.createClass
   getInitialState: ->
     showModal: false
   turnOnOffDialog: ->
@@ -59,7 +60,7 @@ d = React.DOM
                   'Close'
 
 createModal = React.createFactory(Modal)
-
+module.exports = createModal
 ScrapForm = React.createClass
   getInitialState: ->
     showModal: false
@@ -205,7 +206,7 @@ ScrapForm = React.createClass
         "Save"
 scrapForm = React.createFactory(ScrapForm)
 ########################################
-@FormInputWithLabel = React.createClass
+FormInputWithLabel = React.createClass
   getDefaultProps: ->
     elementType: "input"
     inputType: "text"
@@ -242,7 +243,7 @@ scrapForm = React.createFactory(ScrapForm)
 formInputWithLabel = React.createFactory(FormInputWithLabel)
 
 ########################################
-@FormSelectWithLabel = React.createClass
+FormSelectWithLabel = React.createClass
   render: ->
     d.div
       className: "form-group"
@@ -276,7 +277,7 @@ formInputWithLabel = React.createFactory(FormInputWithLabel)
       @props.warning
 formSelectWithLabel = React.createFactory(FormSelectWithLabel)
 
-@SelectOption = React.createClass
+SelectOption = React.createClass
   render: ->
     d.option
       value: @props.id
@@ -369,7 +370,7 @@ Partial = React.createClass
 partial = React.createFactory(Partial)
 
 
-@Accordion = React.createClass
+Accordion = React.createClass
   getInitialState: ->
     childCount:  @props.scraps
     childChanged: true
