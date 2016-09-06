@@ -1,6 +1,6 @@
 React = require 'react'
 d = React.DOM
-
+alert("ads")
 Modal = React.createClass
   getInitialState: ->
     showModal: false
@@ -25,7 +25,7 @@ Modal = React.createClass
           @props.children
   render: ->
     d.div
-      className: "modal-container  in"
+      className: ""
       d.button
         onClick: () =>
           @turnOnOffDialog()
@@ -60,7 +60,7 @@ Modal = React.createClass
                   'Close'
 
 createModal = React.createFactory(Modal)
-module.exports = createModal
+module.exports = createModal;
 ScrapForm = React.createClass
   getInitialState: ->
     showModal: false
@@ -398,6 +398,5 @@ Accordion = React.createClass
           updater: @updateMe
 
 createScrapsAccordion = React.createFactory(Accordion)
-
 
 
